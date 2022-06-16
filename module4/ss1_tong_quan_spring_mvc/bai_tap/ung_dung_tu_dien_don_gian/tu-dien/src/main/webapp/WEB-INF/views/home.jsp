@@ -8,7 +8,7 @@
 <form action="/dictionary">
     <input type="text" name="search" placeholder="Nhập từ cần tra: "/>
     <input type="submit" value="Search"/>
-    <h2>Result: ${result}</h2>
+    <h3>Result: ${result}</h3>
 </form>
 
 </body>
