@@ -13,10 +13,10 @@
 <body>
 <form action="/calculator">
     <h1>Calculator</h1>
-    <input type="text" name="soHangDau"> Số hạng đầu
+    <input type="text" name="numberOne"> Số hạng đầu
     <br>
     <br>
-    <input type="text" name="soHangSau"> Số hạng hai
+    <input type="text" name="numberTwo"> Số hạng hai
     <br>
     <br>
     <input type="submit" name="calculator" value="+"> Phép cộng

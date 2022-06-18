@@ -19,8 +19,8 @@ public class CalculatorController {
     }
 
     @RequestMapping("/calculator")
-    public String goCalculator(@RequestParam String calculator, @RequestParam Double soHangDau, @RequestParam Double soHangSau, Model model) {
-        model.addAttribute("result", this.iCalculatorService.Calculator(soHangDau, soHangSau, calculator));
+    public String goCalculator(@RequestParam String calculator, @RequestParam Double numberOne, @RequestParam Double numberTwo, Model model) {
+        model.addAttribute("result", this.iCalculatorService.Calculator(numberOne, numberTwo, calculator));
         return "home";
     }
 
