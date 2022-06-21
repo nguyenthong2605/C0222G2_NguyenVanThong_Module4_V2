@@ -10,7 +10,7 @@
 <h1 style="text-align: center">PRODUCT LIST</h1>
 <p>
     <a th:href="@{/product/create}">
-      <i style="margin-left: 40px; font-size: x-large" class="fas fa-plus-square"></i>
+      <i style="margin-left: 40px; font-size: xx-large; color: #4F4F4F" class="fas fa-plus-square"></i>
     </a>
 </p>
 <div class="notify">
@@ -39,19 +39,21 @@
         <td th:text="${productObj.describe}"></td>
         <td th:text="${productObj.producer}"></td>
         <td class="d-flex justify-content-between">
-            <a th:href="@{product/{id}/edit(id=${productObj.getId()})}"><i style="font-size: x-large" class="fas fa-user-edit"></i></a>
-            <a th:href="@{product/{id}/delete(id=${productObj.getId()})}"><i style="font-size: x-large" class="fas fa-trash-alt"></i></a>
-            <a th:href="@{product/{id}/view(id=${productObj.getId()})}"><i style="font-size: x-large" class="fas fa-eye"></i></a>
+            <a th:href="@{product/{id}/edit(id=${productObj.getId()})}"><i style="font-size: x-large; color: #4F4F4F" class="fas fa-user-edit"></i></a>
+            <a th:href="@{product/{id}/delete(id=${productObj.getId()})}"><i style="font-size: x-large; color: #4F4F4F" class="fas fa-trash-alt"></i></a>
+            <a th:href="@{product/{id}/view(id=${productObj.getId()})}"><i style="font-size: x-large; color: #4F4F4F" class="fas fa-eye"></i></a>
         </td>
     </tr>
     </tbody>
 </table>
 
 <footer th:replace="~{layout :: footer}"></footer>
+
+<th:block th:replace="~{layout :: jsMDB}"></th:block>
 </body>
 </html>
 <!-- MDB -->
-<script
-        type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"
-></script>
+<!--<script-->
+<!--        type="text/javascript"-->
+<!--        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"-->
+<!--&gt;</script>-->

@@ -32,6 +32,7 @@ public class ProductServiceImpl implements IProductService {
         products.put(product.getId(), product);
     }
 
+
     @Override
     public Product findById(Integer id) {
         for (Map.Entry<Integer, Product> entry: products.entrySet()) {
@@ -49,7 +50,7 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public void remove(Integer id) {
-        for (Map.Entry<Integer, Product> entry: products.entrySet()) {
+        for (Map.Entry<Integer, Product> entry : products.entrySet()) {
             if (entry.getValue().getId().equals(id)) {
                 products.remove(entry.getKey());
                 break;
