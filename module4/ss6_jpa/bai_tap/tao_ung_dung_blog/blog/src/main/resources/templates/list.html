@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{layout :: MDBootstrap}"></th:block>
+</head>
+<body>
+<nav th:replace="~{layout :: navbar}"></nav>
+<h1 style="text-align: center">SONG LIST</h1>
+<p>
+    <a th:href="@{/blog/create}">
+        <i style="margin-left: 40px; font-size: xx-large; color: #4F4F4F" class="fas fa-plus-square"></i>
+    </a>
+</p>
+<div class="notify">
+    <div th:if="${success}">
+        <span th:text="${success}"></span>
+    </div>
+</div>
+<table class="table">
+    <thead class="white-text">
+    <tr style="background-color: black; color: white">
+        <!--        <th scope="col">#</th>-->
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Content</th>
+        <th scope="col">Author</th>
+        <th scope="col" style="text-align: center">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="blogObj, loop : ${blogList}">
+        <!--        <th scope="row" th:text="${loop.count}"></th>-->
+        <td th:text="${blogObj.id}"></td>
+        <td th:text="${blogObj.name}"></td>
+        <td th:text="${blogObj.content}"></td>
+        <td th:text="${blogObj.author}"></td>
+        <td class="d-flex justify-content-between">
+            <a th:href="@{blog/{id}/edit(id=${blogObj.getId()})}"><i style="font-size: x-large; color: #4F4F4F" class="fas fa-user-edit"></i></a>
+<!--            <a th:href="@{blog/{id}/delete(id=${blogObj.getId()})}"><i style="font-size: x-large; color: #4F4F4F" class="fas fa-trash-alt"></i></a>-->
+            <a th:href="@{blog/{id}/view(id=${blogObj.getId()})}"><i style="font-size: x-large; color: #4F4F4F" class="fas fa-eye"></i></a>
+            <button th:cl type="button" class="btn " style="background: red" data-toggle="modal"
+                    data-target="#exampleModalLong"
+                    th:attr="onclick = | deleteModal(${blogObj.id}')|">
+                <i style="font-size: x-large; color: #4F4F4F" class="fas fa-trash-alt"></i>
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Modal -->
+<form method="post" action="/blog/delete">
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="id" id="idCanXoa">
+                    Bạn có chắc muốn xóa blog <br>
+                    <p style="color: red">Lưu ý: Xóa rồi không thể hoàn tác!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    function deleteModal(id) {
+        document.getElementById("idCanXoa").value = id;
+    }
+</script>
+
+<footer th:replace="~{layout :: footer}"></footer>
+
+<th:block th:replace="~{layout :: jsMDB}"></th:block>
+</body>
+</html>
+<!-- MDB -->
+<!--<script-->
+<!--        type="text/javascript"-->
+<!--        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"-->
+<!--&gt;</script>-->

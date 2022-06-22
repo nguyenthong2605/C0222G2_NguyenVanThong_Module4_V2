@@ -16,7 +16,7 @@ public class Song {
     private String kindOfMusic;
 
     private String path;
-
+                
     public Song() {
     }
 

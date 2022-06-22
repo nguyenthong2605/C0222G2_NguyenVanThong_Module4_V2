@@ -34,6 +34,7 @@ public class SongRepositoryImpl implements ISongRepository {
         typedQuery.setParameter("songId", id);
 
         return typedQuery.getSingleResult() ;
+
     }
 
     @Override
