@@ -58,7 +58,7 @@ public class BlogController {
         return "view";
     }
 
-    @PostMapping("delete")
+    @GetMapping("{id}/delete")
     public String delete(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
         Blog blog = this.iBlogService.findById(id);
         this.iBlogService.deleteBlogById(blog);
