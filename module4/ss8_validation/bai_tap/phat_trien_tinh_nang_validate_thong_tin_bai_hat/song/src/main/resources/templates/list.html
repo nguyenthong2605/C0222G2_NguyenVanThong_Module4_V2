@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{layout :: MDBootstrap}"></th:block>
+</head>
+<body>
+<nav th:replace="~{layout :: navbar}"></nav>
+<h1 style="text-align: center">SONG LIST</h1>
+<p>
+    <a th:href="@{/song/create}">
+        <i style="margin-left: 40px; font-size: xx-large; color: #4F4F4F" class="fas fa-plus-square"></i>
+    </a>
+</p>
+<div class="notify">
+    <div th:if="${success}">
+        <span th:text="${success}"></span>
+    </div>
+</div>
+<table class="table">
+    <thead class="white-text">
+    <tr style="background-color: black; color: white">
+<!--        <th scope="col">#</th>-->
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Singer</th>
+        <th scope="col">Kind Of Music</th>
+        <th scope="col">Path</th>
+        <th scope="col" style="text-align: center">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="songObj, loop : ${songList}">
+<!--        <th scope="row" th:text="${loop.count}"></th>-->
+        <td th:text="${songObj.id}"></td>
+        <td th:text="${songObj.name}"></td>
+        <td th:text="${songObj.singer}"></td>
+        <td th:text="${songObj.kindOfMusic}"></td>
+        <td>
+            <audio controls th:src="${songObj.path}">
+            </audio>
+        </td>
+        <td class="d-flex justify-content-between">
+            <a th:href="@{song/{id}/edit(id=${songObj.getId()})}"><i style="font-size: x-large; color: #4F4F4F" class="fas fa-user-edit"></i></a>
+            <a th:href="@{song/{id}/delete(id=${songObj.getId()})}"><i style="font-size: x-large; color: #4F4F4F" class="fas fa-trash-alt"></i></a>
+            <a th:href="@{song/{id}/view(id=${songObj.getId()})}"><i style="font-size: x-large; color: #4F4F4F" class="fas fa-eye"></i></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<footer th:replace="~{layout :: footer}"></footer>
+
+<th:block th:replace="~{layout :: jsMDB}"></th:block>
+</body>
+</html>
+<!-- MDB -->
+<!--<script-->
+<!--        type="text/javascript"-->
+<!--        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"-->
+<!--&gt;</script>-->
