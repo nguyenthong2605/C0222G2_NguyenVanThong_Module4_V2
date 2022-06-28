@@ -1,6 +1,7 @@
 package com.codegym.song.dto;
 
 import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.Validator;
 
 import javax.validation.constraints.NotBlank;
@@ -9,9 +10,13 @@ public class SongDto implements Validator {
     private Integer id;
 
     @NotBlank(message = "Name is blank")
+
     private String name;
+
     @NotBlank(message = "Singer is blank")
+
     private String singer;
+
     @NotBlank(message = "Kind Of Music is blank")
     private String kindOfMusic;
 
@@ -67,25 +72,31 @@ public class SongDto implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        String regexSpecialChar = "^[a-zA-Z0-9]*$";
+        String regexSpecialChar = "^[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]*$";
         SongDto songDto = (SongDto) target;
-        if (songDto.getName().length() > 800){
-            errors.rejectValue("name", "name_length", "Name's length must be less than 800 characters");
-        }
-        if (songDto.getName().matches(regexSpecialChar)){
-            errors.rejectValue("name", "name_char", "Not allowed special characters");
-        }
-        if (songDto.getSinger().length() > 300){
-            errors.rejectValue("singer", "singer_length", "Singer length must be less than 300 characters");
-        }
-        if (songDto.getSinger().matches(regexSpecialChar)){
-            errors.rejectValue("singer", "singer_char", "Not allowed special characters");
-        }
-        if (songDto.kindOfMusic.length()>1000){
-            errors.rejectValue("kindOfMusic", "kindOfMusic_length", "King Of Music length must be less than 1000 characters");
-        }
-        if (songDto.getKindOfMusic().matches(regexSpecialChar)){
-            errors.rejectValue("kindOfMusic", "kindOfMusic_char", "Not allowed special characters");
-        }
+       if (errors.getFieldError("name") == null){
+           if (songDto.getName().length() > 3) {
+               errors.rejectValue("name", "name_length");
+           }
+           if (songDto.getName().matches(regexSpecialChar)){
+               errors.rejectValue("name", "name_char", "Not allowed special characters");
+           }
+       }
+       if (errors.getFieldError("singer")==null){
+           if (songDto.getSinger().length() > 3) {
+               errors.rejectValue("singer", "singer_length");
+           }
+           if (songDto.getSinger().matches(regexSpecialChar)) {
+               errors.rejectValue("singer", "singer_char");
+           }
+       }
+       if (errors.getFieldError("kindOfMusic")==null){
+           if (songDto.kindOfMusic.length() > 1000) {
+               errors.rejectValue("kindOfMusic", "kindOfMusic_length");
+           }
+           if (songDto.getKindOfMusic().matches(regexSpecialChar)) {
+               errors.rejectValue("kindOfMusic", "kindOfMusic_char");
+           }
+       }
     }
 }

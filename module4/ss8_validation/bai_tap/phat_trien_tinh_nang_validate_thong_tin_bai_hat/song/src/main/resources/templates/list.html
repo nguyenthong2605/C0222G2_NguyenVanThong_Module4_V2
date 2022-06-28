@@ -4,6 +4,28 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <th:block th:replace="~{layout :: MDBootstrap}"></th:block>
+    <style>
+        /*Floating Back-To-Top Button*/
+        #myBtn {
+            position: fixed;
+            bottom: 10px;
+            float: right;
+            max-width: 30px;
+            width: 100%;
+            font-size: 12px;
+            border-color: rgba(85, 85, 85, 0.2);
+            background-color: rgb(100, 100, 100);
+            padding: .5px;
+            border-radius: 4px;
+            margin-left: 80%;
+
+        }
+
+        /*On Hover Color Change*/
+        #myBtn:hover {
+            background-color: #7dbbf1;
+        }
+    </style>
 </head>
 <body>
 <nav th:replace="~{layout :: navbar}"></nav>
@@ -21,7 +43,7 @@
 <table class="table">
     <thead class="white-text">
     <tr style="background-color: black; color: white">
-<!--        <th scope="col">#</th>-->
+        <!--        <th scope="col">#</th>-->
         <th scope="col">Id</th>
         <th scope="col">Name</th>
         <th scope="col">Singer</th>
@@ -32,7 +54,7 @@
     </thead>
     <tbody>
     <tr th:each="songObj, loop : ${songList}">
-<!--        <th scope="row" th:text="${loop.count}"></th>-->
+        <!--        <th scope="row" th:text="${loop.count}"></th>-->
         <td th:text="${songObj.id}"></td>
         <td th:text="${songObj.name}"></td>
         <td th:text="${songObj.singer}"></td>
@@ -42,9 +64,12 @@
             </audio>
         </td>
         <td class="d-flex justify-content-between">
-            <a th:href="@{song/{id}/edit(id=${songObj.getId()})}"><i style="font-size: x-large; color: #4F4F4F" class="fas fa-user-edit"></i></a>
-            <a th:href="@{song/{id}/delete(id=${songObj.getId()})}"><i style="font-size: x-large; color: #4F4F4F" class="fas fa-trash-alt"></i></a>
-            <a th:href="@{song/{id}/view(id=${songObj.getId()})}"><i style="font-size: x-large; color: #4F4F4F" class="fas fa-eye"></i></a>
+            <a th:href="@{song/{id}/edit(id=${songObj.getId()})}"><i style="font-size: x-large; color: #4F4F4F"
+                                                                     class="fas fa-user-edit"></i></a>
+            <a th:href="@{song/{id}/delete(id=${songObj.getId()})}"><i style="font-size: x-large; color: #4F4F4F"
+                                                                       class="fas fa-trash-alt"></i></a>
+            <a th:href="@{song/{id}/view(id=${songObj.getId()})}"><i style="font-size: x-large; color: #4F4F4F"
+                                                                     class="fas fa-eye"></i></a>
         </td>
     </tr>
     </tbody>
@@ -53,6 +78,9 @@
 <footer th:replace="~{layout :: footer}"></footer>
 
 <th:block th:replace="~{layout :: jsMDB}"></th:block>
+
+<button id="myBtn"><a href="#top" style="color: white"><i class="fas fa-hand-point-up"></i></a></button>
+
 </body>
 </html>
 <!-- MDB -->
