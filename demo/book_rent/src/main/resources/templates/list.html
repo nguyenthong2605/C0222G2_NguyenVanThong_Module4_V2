@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{layout :: MDBootstrap}"></th:block>
+    <style>
+        /*Floating Back-To-Top Button*/
+        #myBtn {
+            position: fixed;
+            bottom: 10px;
+            float: right;
+            max-width: 30px;
+            width: 100%;
+            font-size: 12px;
+            border-color: rgba(85, 85, 85, 0.2);
+            background-color: rgb(100, 100, 100);
+            padding: .5px;
+            border-radius: 4px;
+            margin-left: 80%;
+
+        }
+
+        /*On Hover Color Change*/
+        #myBtn:hover {
+            background-color: #7dbbf1;
+        }
+    </style>
+</head>
+<body>
+<nav th:replace="~{layout :: navbar}"></nav>
+<h1 style="text-align: center">SONG LIST</h1>
+<p>
+    <a th:href="@{/book/create}">
+        <i style="margin-left: 40px; font-size: xx-large; color: #4F4F4F" class="fas fa-plus-square"></i>
+    </a>
+</p>
+<div class="notify">
+    <div th:if="${success}">
+        <span th:text="${success}"></span>
+    </div>
+</div>
+<table class="table">
+    <thead class="white-text">
+    <tr style="background-color: black; color: white">
+        <!--        <th scope="col">#</th>-->
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Author</th>
+        <th scope="col">Amount</th>
+        <th scope="col" style="text-align: center">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="bookObj, loop : ${bookList}">
+        <!--        <th scope="row" th:text="${loop.count}"></th>-->
+        <td th:text="${bookObj.id}"></td>
+        <td th:text="${bookObj.name}"></td>
+        <td th:text="${bookObj.author}"></td>
+        <td th:text="${bookObj.amount}"></td>
+        <td class="d-flex justify-content-between">
+            <a th:href="@{book/{id}/edit(id=${bookObj.getId()})}"><i style="font-size: x-large; color: #4F4F4F"
+                                                                     class="fas fa-user-edit"></i></a>
+            <a th:href="@{book/{id}/delete(id=${bookObj.getId()})}"><i style="font-size: x-large; color: #4F4F4F"
+                                                                       class="fas fa-trash-alt"></i></a>
+            <a th:href="@{book/{id}/view(id=${bookObj.getId()})}"><i style="font-size: x-large; color: #4F4F4F"
+                                                                     class="fas fa-eye"></i></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<footer th:replace="~{layout :: footer}"></footer>
+
+<th:block th:replace="~{layout :: jsMDB}"></th:block>
+
+<button id="myBtn"><a href="#top" style="color: white"><i class="fas fa-hand-point-up"></i></a></button>
+
+</body>
+</html>
+<!-- MDB -->
+<!--<script-->
+<!--        type="text/javascript"-->
+<!--        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"-->
+<!--&gt;</script>-->
