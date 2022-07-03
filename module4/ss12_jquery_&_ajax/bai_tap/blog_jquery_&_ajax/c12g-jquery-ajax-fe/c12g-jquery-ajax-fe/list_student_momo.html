@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List student momo</title>
+    <link rel="stylesheet" href="css/mdb.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <div class="row w-50 mx-auto">
+        <div class="col-lg-10">
+            <input class="form-control" type="text" id="keyword">
+        </div>
+        <div class="col-lg-2">
+            <button class="btn btn-primary" id="btnSearch">Search</button>
+        </div>
+    </div>
+    <div class="row w-50 mx-auto">
+        <div class="col-lg-12">
+            <h2>List student Momo</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Content</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Category</th>
+                    <th scope="col" colspan="2">Action</th>
+                </tr>
+                </thead>
+                <tbody id="bodyStudent">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <nav aria-label="..." class="d-flex justify-content-center">
+        <ul class="pagination">
+            <li class="page-item">
+                <button class="page-link" id="aPrevious">Previous</button>
+            </li>
+            <li class="page-item disabled" id="pageNumber">/</li>
+            <li class="page-item">
+                <button class="page-link" id="aNext">Next</button>
+            </li>
+        </ul>
+    </nav>
+
+</div>
+
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/mdb.min.js"></script>
+<script>
+    let curPage = 0;
+    let total = 0;
+
+    function getPageStudent(pageNumber = 0, keyword = "") {
+        console.log(keyword)
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "GET", //GET, DELETE, PUT...\
+            // url: "http://localhost:8080/api/blog?page=" + pageNumber,
+            url: "http://localhost:8080/api/blog?page=" + pageNumber + "&keyword=" + keyword,
+            success: function (data) {
+                console.log(data);
+                total = data.totalElements;
+                // console.log(pageStudent.content);
+                let outHTML = "";
+                let count = 1;
+                for (let studentObj of data.content) {
+                    outHTML += `<tr>
+                                    <td>${count++}</td>
+                                    <td>${studentObj.id}</td>
+                                    <td>${studentObj.name}</td>
+                                    <td>${studentObj.content}</td>
+                                    <td>${studentObj.author}</td>
+                                    <td>${studentObj.category.name}</td>
+                                    <td>
+                                        <a href="#">Update</a>
+                                    </td>
+                                    <td>
+                                        <a href="#">Delete</a>
+                                    </td>
+                                </tr>`;
+                }
+
+                $("#bodyStudent").html(outHTML);
+                $("#pageNumber").html((1 + data.number) + "/" + (Math.ceil(total / 3)));
+                if (data.number == data.totalPages - 1) {
+                    $("#aNext").prop("disable", true)
+                } else {
+                    $("#aNext").click(function () {
+                        getPageStudent(data.number + 1);
+                    })
+                }
+                if (data.number == 0) {
+                    $("#aPrevious").prop("disable", true)
+                } else {
+                    $("#aPrevious").click(function () {
+                        getPageStudent(data.number - 1)
+                    })
+                }
+            },
+            error: function (resultError) {
+                console.log(resultError);
+            }
+        });
+    }
+
+    $('#btnSearch').click(function () {
+        let kq = $('#keyword').val();
+        getPageStudent(0, kq);
+    })
+    getPageStudent(curPage,);
+
+
+</script>
+</body>
+</html>

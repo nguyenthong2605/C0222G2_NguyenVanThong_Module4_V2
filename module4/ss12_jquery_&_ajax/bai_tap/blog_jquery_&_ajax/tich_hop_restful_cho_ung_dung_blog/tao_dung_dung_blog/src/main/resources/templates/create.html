@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{layout :: link-css}"></th:block>
+</head>
+<body>
+<th:block th:replace="~{layout :: css-navbar}"></th:block>
+<h1>Create product</h1>
+<p>
+    <a th:href="@{/blog}">
+        Back to blog list
+    </a>
+</p>
+<form th:action="@{/blog/save}" th:object="${blog}"
+      method="POST" novalidate="novalidate">
+    <fieldset style="width: 30%">
+        <legend><h2>Blog</h2></legend>
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input type="text" th:field="*{name}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Content</td>
+                <td>
+                    <input type="text" th:field="*{content}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Author</td>
+                <td>
+                    <input type="text" th:field="*{author}"/>
+                </td>
+            </tr>
+            <tr>
+                <td> Category</td>
+                <td>
+                    <select th:field="*{category}">
+                        <option th:each="categoryObj : ${categoryList}"
+                                th:value="${categoryObj.id}" th:text="${categoryObj.name}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Save"/></td>
+            </tr>
+        </table>
+    </fieldset>
+</form>
+<th:block th:replace="~{layout :: footer}"></th:block>
+</body>
+</html>
+<script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"
+></script>
