@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{layout :: MDBootstrap}"></th:block>
+</head>
+<body>
+<nav th:replace="~{layout :: navbar}"></nav>
+<h1 style="text-align: center">ADD FACILITY</h1>
+
+<div class="col-6 mx-auto">
+    <form th:action="@{/facility/save}" th:object="${facility}"
+          method="POST" novalidate="novalidate">
+        <table border="1" cellpadding="5" class="table table-striped table-dark">
+            <input type="hidden" th:field="*{id}"/>
+            <tr>
+                <th>Name:</th>
+                <td>
+                    <input type="text" th:field="*{name}" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Area:</th>
+                <td>
+                    <input type="text" th:field="*{area}" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Max People:</th>
+                <td>
+                    <input type="text" th:field="*{maxPeople}" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Cost:</th>
+                <td>
+                    <input type="text" th:field="*{cost}" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Rent Type :</th>
+                <td>
+                    <select th:field="*{rentType}" class="form-select">
+                        <option th:each="rentTypeObj : ${rentTypeList}"
+                                th:text="${rentTypeObj.name}"
+                                th:value="${rentTypeObj.id}">
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Facility Type :</th>
+                <td>
+                    <select th:field="*{facilityType}" class="form-select" id="facility_select">
+                        <option value="">Choose Facility Type</option>
+                        <option th:each="facilityTypeObj : ${facilityTypeList}"
+                                th:text="${facilityTypeObj.name}"
+                                th:value="${facilityTypeObj.id}">
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Save" class="form-control"/>
+                </td>
+            </tr>
+
+            <!--            Villa-->
+            <tr id="villa">
+                <th>Standard Room:</th>
+                <td>
+                    <input type="text" th:field="*{standardRoom}" class="form-control"/>
+                </td>
+            </tr>
+            <tr id="villa">
+                <th>Description Other Convenience:</th>
+                <td>
+                    <input type="text" th:field="*{descriptionOtherConvenience}" class="form-control"/>
+                </td>
+            </tr>
+            <tr id="villa">
+                <th>Pool Area:</th>
+                <td>
+                    <input type="text" th:field="*{poolArea}" class="form-control"/>
+                </td>
+            </tr>
+            <tr id="villa">
+                <th>Number Of Floors:</th>
+                <td>
+                    <input type="text" th:field="*{numberOfFloors}" class="form-control"/>
+                </td>
+            </tr>
+
+            <!--            Room-->
+            <tr id="room">
+                <th>Facility Free:</th>
+                <td>
+                    <input type="text" th:field="*{facilityFree}" class="form-control">
+                </td>
+            </tr>
+
+            <!--            House-->
+            <tr id="house">
+                <th>Standard Room:</th>
+                <td>
+                    <input type="text" th:field="*{standardRoom}" class="form-control"/>
+                </td>
+            </tr>
+            <tr id="house">
+                <th>Description Other Convenience:</th>
+                <td>
+                    <input type="text" th:field="*{descriptionOtherConvenience}" class="form-control"/>
+                </td>
+            </tr>
+            <tr id="house">
+                <th>Number Of Floors:</th>
+                <td>
+                    <input type="text" th:field="*{numberOfFloors}" class="form-control"/>
+                </td>
+            </tr>
+
+            <td colspan="2" align="center">
+                <button class="btn" style="background: azure">
+                    <a  style="text-decoration: none; color: black" th:href="@{/facility}">Back to list</a>
+                </button>
+            </td>
+        </table>
+    </form>
+</div>
+
+<footer th:replace="~{layout :: footer}"></footer>
+
+<th:block th:replace="~{layout :: jsMDB}"></th:block>
+</body>
+</html>
+<!-- MDB -->
+<!--<script-->
+<!--        type="text/javascript"-->
+<!--        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"-->
+<!--&gt;</script>-->
+<script>
+    $(document).ready(function () {
+        $("#villa").hide();
+        $("#villa").find(input).prop("disabled", true);
+        $("#house").hide();
+        $("#house").find(input).prop("disabled", true);
+        $("#room").hide();
+        $("#room").find(input).prop("disabled", true);
+    })
+    $(document).change
+
+
+</script>

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <th:block th:replace="~{layout :: MDBootstrap}"></th:block>
     <style>
         @import url("https://fonts.googleapis.com/css?family=Raleway:300,400");
         @import url("https://fonts.googleapis.com/css?family=Montserrat:700");
@@ -618,144 +620,16 @@
             }
         }
 
-        @-moz-keyframes colorChange {
-            0% {
-                background-color: #e91e63;
-            }
-            11% {
-                background-color: #f44336;
-            }
-            22% {
-                background-color: #ff9800;
-            }
-            33% {
-                background-color: #ffeb3b;
-            }
-            44% {
-                background-color: #8bc34a;
-            }
-            55% {
-                background-color: #009688;
-            }
-            66% {
-                background-color: #00bcd4;
-            }
-            77% {
-                background-color: #2196f3;
-            }
-            88% {
-                background-color: #673ab7;
-            }
-            100% {
-                background-color: #9c27b0;
-            }
-        }
-
-        @-webkit-keyframes colorChange {
-            0% {
-                background-color: #e91e63;
-            }
-            11% {
-                background-color: #f44336;
-            }
-            22% {
-                background-color: #ff9800;
-            }
-            33% {
-                background-color: #ffeb3b;
-            }
-            44% {
-                background-color: #8bc34a;
-            }
-            55% {
-                background-color: #009688;
-            }
-            66% {
-                background-color: #00bcd4;
-            }
-            77% {
-                background-color: #2196f3;
-            }
-            88% {
-                background-color: #673ab7;
-            }
-            100% {
-                background-color: #9c27b0;
-            }
-        }
-
-        @-o-keyframes colorChange {
-            0% {
-                background-color: #e91e63;
-            }
-            11% {
-                background-color: #f44336;
-            }
-            22% {
-                background-color: #ff9800;
-            }
-            33% {
-                background-color: #ffeb3b;
-            }
-            44% {
-                background-color: #8bc34a;
-            }
-            55% {
-                background-color: #009688;
-            }
-            66% {
-                background-color: #00bcd4;
-            }
-            77% {
-                background-color: #2196f3;
-            }
-            88% {
-                background-color: #673ab7;
-            }
-            100% {
-                background-color: #9c27b0;
-            }
-        }
-
-        @keyframes colorChange {
-            0% {
-                background-color: #e91e63;
-            }
-            11% {
-                background-color: #f44336;
-            }
-            22% {
-                background-color: #ff9800;
-            }
-            33% {
-                background-color: #ffeb3b;
-            }
-            44% {
-                background-color: #8bc34a;
-            }
-            55% {
-                background-color: #009688;
-            }
-            66% {
-                background-color: #00bcd4;
-            }
-            77% {
-                background-color: #2196f3;
-            }
-            88% {
-                background-color: #673ab7;
-            }
-            100% {
-                background-color: #9c27b0;
-            }
-        }
-
     </style>
 </head>
 
 <body>
 <div class="fixed-nav-bar">
-    <div class="logo"><span>FURAMA</span>Resort</div>
+    <div class="logo">
+        <span>FURAMA</span>
+        Resort
+    </div>
+    <h1 style="text-align: center; margin-top: 20px">FACILITY LIST</h1>
     <input type="checkbox" id="menuButton"/>
     <label for="menuButton" class="menu-button-label">
         <div class="white-bar"></div>
@@ -763,6 +637,22 @@
         <div class="white-bar"></div>
         <div class="white-bar"></div>
     </label>
+    <div class="container-1">
+        <form class="d-flex input-group w-auto" action="/blog">
+            <input
+                    type="text"
+                    name="keyword"
+                    class="form-control  rounded"
+                    placeholder="Search"
+                    aria-label="Search"
+                    aria-describedby="search-addon"
+                    style="max-width: 250px"
+            />
+            <span class="input-group-text text-white border-0" id="search-addon">
+                <input type="submit" value="search" class="fas fa-search">
+            </span>
+        </form>
+    </div>
 </div>
 <div class="the-bass">
     <div class="rela-block drop-down-container">
@@ -777,55 +667,75 @@
     <div class="rela-block drop-down-container">
         <div class="drop-down-item">Contract</div>
     </div>
-        <div class="rela-block drop-down-container">
-            <div class="drop-down-item"></div>
-        </div>
-        <div class="rela-block drop-down-container">
-            <div class="drop-down-item"></div>
-        </div>
 </div>
-<div class="rela-block deer-section"></div>
-<div class="rela-block second-section cover-before">
-    <div class="big-floaty-image">
-<!--        <p class="absolute-center-text">FURAMA RESORT</p>-->
+<div class="notify">
+    <div th:if="${success}">
+        <span th:text="${success}"></span>
     </div>
 </div>
-<div class="rela-block third-section cover-before">
-    <p class="absolute-center-text">Tinh tế bản nguyên cuộc sống<br><br>Fantasticity!</p>
-</div>
-<div class="rela-block fourth-section">
-    <p class="hover-pointer"></p>
-    <div class="rela-block color-square-container">
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
+<p>
+    <a th:href="@{/facility/create}">
+        <i style="margin-left: 40px; font-size: xx-large; color: #4F4F4F" class="fas fa-plus-square"></i>
+    </a>
+</p>
+<table class="table" style="margin-top: 120px">
+    <thead class="white-text">
+    <tr style="background-color: black; color: white">
+        <!--        <th scope="col">#</th>-->
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Area</th>
+        <th scope="col">Max People</th>
+        <th scope="col">Rent Type</th>
+        <th scope="col">Facility Type</th>
+        <th scope="col">Standard Room</th>
+        <th scope="col">Pool Area</th>
+        <th scope="col">Number Of Floors</th>
+        <th scope="col">Facility Free</th>
+        <th scope="col" style="text-align: center">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="facilityObj, loop : ${facilityList}">
+        <!--        <th scope="row" th:text="${loop.count}"></th>-->
+        <td th:text="${facilityObj.id}"></td>
+        <td th:text="${facilityObj.name}"></td>
+        <td th:text="${facilityObj.area}"></td>
+        <td th:text="${facilityObj.maxPeople}"></td>
+        <td th:text="${facilityObj.rentType.name}"></td>
+        <td th:text="${facilityObj.facilityType.name}"></td>
+        <td th:text="${facilityObj.standardRoom}"></td>
+        <td th:text="${facilityObj.poolArea}"></td>
+        <td th:text="${facilityObj.numberOfFloors}"></td>
+        <td th:text="${facilityObj.facilityFree}"></td>
+        <td class="d-flex justify-content-between">
+            <a th:href="@{facility/{id}/edit(id=${facilityObj.getId()})}"><i style="font-size: x-large; color: #4F4F4F"
+                                                                             class="fas fa-user-edit"></i></a>
+            <a th:href="@{facility/{id}/delete(id=${facilityObj.getId()})}"><i
+                    style="font-size: x-large; color: red"
+                    class="fas fa-trash-alt"></i></a>
+            <a th:href="@{facility/{id}/view(id=${facilityObj.getId()})}"><i style="font-size: x-large; color: #00bcd4"
+                                                                             class="fas fa-eye"></i></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div class="row">
+    <div class="coll-lg-12">
+        <a th:if="${facilityList.hasPrevious()}"
+           th:href="@{/facility/(page=${facilityList.number - 1}, keyword=${keywordVal})}">
+            <i class="fas fa-chevron-circle-left" style="color: black"></i>
+        </a>
+        <span th:text="${facilityList.number + 1}"></span>
+        /
+        <span th:text="${facilityList.totalPages}"></span>
+        <a th:if="${facilityList.hasNext()}"
+           th:href="@{/facility/(page=${facilityList.number + 1}, keyword=${keywordVal})}">
+            <i class="fas fa-chevron-circle-right" style="color: black"></i>
+        </a>
     </div>
-    <div class="rela-block big-back-text-container">
-        <h1 class="big-back-text">FURAMA RESORT</h1>
-    </div>
 </div>
+
 <div class="rela-block footer">
     <div class="rela-block social-buttons-container">
         <div class="social-button facebook-button"></div>
@@ -864,7 +774,6 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
