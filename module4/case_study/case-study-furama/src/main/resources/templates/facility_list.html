@@ -625,11 +625,11 @@
 
 <body>
 <div class="fixed-nav-bar">
-    <div class="logo">
-        <span>FURAMA</span>
+    <div class="logo" style="font-size: 50px">
+        <span><a href="/home" style="text-decoration: none; color: #ef853e" >FURAMA</a></span>
         Resort
     </div>
-    <h1 style="text-align: center; margin-top: 20px">FACILITY LIST</h1>
+    <h1 style="text-align: center; margin-top: 40px">FACILITY LIST</h1>
     <input type="checkbox" id="menuButton"/>
     <label for="menuButton" class="menu-button-label">
         <div class="white-bar"></div>
@@ -638,7 +638,7 @@
         <div class="white-bar"></div>
     </label>
     <div class="container-1">
-        <form class="d-flex input-group w-auto" action="/blog">
+        <form class="d-flex input-group w-auto" action="/blog" style="margin-bottom: 10px">
             <input
                     type="text"
                     name="keyword"
@@ -649,7 +649,7 @@
                     style="max-width: 250px"
             />
             <span class="input-group-text text-white border-0" id="search-addon">
-                <input type="submit" value="search" class="fas fa-search">
+                <button  type="submit" class="btn btn-rounded"><i class="fas fa-search" style="font-size: 13pt" ></i></button>
             </span>
         </form>
     </div>
@@ -668,18 +668,18 @@
         <div class="drop-down-item">Contract</div>
     </div>
 </div>
-<div class="notify">
-    <div th:if="${success}">
-        <span th:text="${success}"></span>
-    </div>
-</div>
-<p>
-    <a th:href="@{/facility/create}">
-        <i style="margin-left: 40px; font-size: xx-large; color: #4F4F4F" class="fas fa-plus-square"></i>
-    </a>
-</p>
-<table class="table" style="margin-top: 120px">
+<table class="table" style="margin-top: 10px; font-family: sans-serif">
     <thead class="white-text">
+    <div class="notify">
+        <div th:if="${success}">
+            <span th:text="${success}"></span>
+        </div>
+    </div>
+    <p style="margin-top: 150px">
+        <a th:href="@{/facility/create}">
+            <i style="margin-left: 40px; font-size: 40pt; color: #4F4F4F" class="fas fa-plus-square"></i>
+        </a>
+    </p>
     <tr style="background-color: black; color: white">
         <!--        <th scope="col">#</th>-->
         <th scope="col">Id</th>
@@ -709,18 +709,64 @@
         <td th:text="${facilityObj.numberOfFloors}"></td>
         <td th:text="${facilityObj.facilityFree}"></td>
         <td class="d-flex justify-content-between">
-            <a th:href="@{facility/{id}/edit(id=${facilityObj.getId()})}"><i style="font-size: x-large; color: #4F4F4F"
-                                                                             class="fas fa-user-edit"></i></a>
-            <a th:href="@{facility/{id}/delete(id=${facilityObj.getId()})}"><i
-                    style="font-size: x-large; color: red"
-                    class="fas fa-trash-alt"></i></a>
-            <a th:href="@{facility/{id}/view(id=${facilityObj.getId()})}"><i style="font-size: x-large; color: #00bcd4"
-                                                                             class="fas fa-eye"></i></a>
+            <button type="button" class="btn btn-rounded">
+                <a th:href="@{/facility/{id}/edit(id=${facilityObj.getId()})}">
+                    <i style="font-size: x-large; color: #4F4F4F" class="fas fa-user-edit"></i>
+                </a>
+            </button>
+            <br>
+            <button type="button" class="btn btn-rounded">
+                <a th:href="@{/facility/{id}/view(id=${facilityObj.getId()})}">
+                    <i style="font-size: x-large; color: #00bcd4" class="fas fa-eye"></i>
+                </a>
+            </button>
+            <br>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-danger btn-rounded" data-mdb-toggle="modal"
+                    th:data-mdb-target="'#staticBackdrop' + ${facilityObj.id}">
+                <i style="color: white; font-size: x-large" class="fas fa-trash-alt"></i>
+            </button>
+
+            <!-- Modal -->
+            <div
+                    class="modal fade"
+                    th:id="'staticBackdrop' + ${facilityObj.id}"
+                    data-mdb-backdrop="static"
+                    data-mdb-keyboard="false"
+                    tabindex="-1"
+                    aria-labelledby="staticBackdropLabel"
+                    aria-hidden="true"
+            >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-mdb-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h4>Bạn có chắc muốn xóa blog</h4> <br>
+                            <p>ID:
+                                <span th:text="${facilityObj.id}"></span>
+                            </p>
+                            <p>Name:
+                                <span th:text="${facilityObj.name}"></span>
+                            </p>
+                            <p style="color: red">Lưu ý: Xóa rồi không thể hoàn tác!</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                            <a th:href="@{/facility/{id}/delete(id=${facilityObj.getId()})}"
+                               class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </td>
     </tr>
     </tbody>
 </table>
-<div class="row">
+<div class="row" style="text-align: center">
     <div class="coll-lg-12">
         <a th:if="${facilityList.hasPrevious()}"
            th:href="@{/facility/(page=${facilityList.number - 1}, keyword=${keywordVal})}">
@@ -736,7 +782,7 @@
     </div>
 </div>
 
-<div class="rela-block footer">
+<div class="rela-block footer" style="margin-top: 30px">
     <div class="rela-block social-buttons-container">
         <div class="social-button facebook-button"></div>
         <div class="social-button insta-button"></div>
@@ -802,3 +848,7 @@
 
     });
 </script>
+<script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"
+></script>

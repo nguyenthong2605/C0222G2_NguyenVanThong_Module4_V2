@@ -16,4 +16,19 @@ public class FacilityServiceImpl implements IFacilityService {
     public Page<Facility> getAllByKeyWord(String keywordVal, Pageable pageable) {
         return this.iFacilityRepository.findAllByNameContaining(keywordVal,pageable);
     }
+
+    @Override
+    public void save(Facility facility) {
+        this.iFacilityRepository.save(facility);
+    }
+
+    @Override
+    public Facility findById(Integer id) {
+        return this.iFacilityRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void deleteFacilityById(Facility facility) {
+        this.iFacilityRepository.delete(facility);
+    }
 }

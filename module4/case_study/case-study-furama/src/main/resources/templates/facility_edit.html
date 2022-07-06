@@ -52,7 +52,7 @@
             <tr>
                 <th>Facility Type :</th>
                 <td>
-                    <select th:field="*{facilityType}" class="form-select" id="facility-select">
+                    <select th:field="*{facilityType}" class="form-select" id="facility_select">
                         <option value="">Choose Facility Type</option>
                         <option th:each="facilityTypeObj : ${facilityTypeList}"
                                 th:text="${facilityTypeObj.name}"
@@ -128,7 +128,6 @@
                     </button>
                 </td>
             </tr>
-
         </table>
     </form>
 </div>
@@ -138,21 +137,24 @@
 <th:block th:replace="~{layout :: jsMDB}"></th:block>
 </body>
 </html>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
-</script>
+ MDB
+<script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"
+></script>
+<script src="js/jquery-3.6.0.min.js"></script>4
 <script>
     $(document).ready(function () {
-        console.log("123")
         $(".villa").hide();
-        $(".villa").find("input").prop("disabled", true)
+        $(".villa").find(input).prop("disabled", true);
         $(".house").hide();
-        $(".house").find("input").prop("disabled", true)
+        $(".house").find(input).prop("disabled", true);
         $(".room").hide();
-        $(".room").find("input").prop("disabled", true)
+        $(".room").find(input).prop("disabled", true);
     })
-    $("#facility-select").change(function () {
+    $("#service_select").change(function () {
+        console.log('999999999999999')
         if (this.value == 1) {
-            console.log("123")
             $(".villa").show()
             $(".villa").find("input").prop("disabled", false)
             $(".house").hide()

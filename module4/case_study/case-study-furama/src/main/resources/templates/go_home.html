@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -756,7 +757,8 @@
 
 <body>
 <div class="fixed-nav-bar">
-    <div class="logo"><span>FURAMA</span>Resort</div>
+    <div class="logo" style="font-size: 50px"><span><a href="/home" style="text-decoration: none">FURAMA</a></span>
+        Resort</div>
     <input type="checkbox" id="menuButton"/>
     <label for="menuButton" class="menu-button-label">
         <div class="white-bar"></div>
@@ -765,67 +767,70 @@
         <div class="white-bar"></div>
     </label>
 </div>
-<div class="the-bass">
+<div class="the-bass" style="text-align: center">
     <div class="rela-block drop-down-container">
-        <div class="drop-down-item">Employee</div>
+        <div class="drop-down-item"><a href="/employee" style="text-decoration: none; color: white">Employee</a></div>
     </div>
     <div class="rela-block drop-down-container">
-        <div class="drop-down-item">Customer</div>
+        <div class="drop-down-item">
+            <div><a href="/customer" style="text-decoration: none; color: white">Customer</a></div>
+            <div><i class="fas fa-users"></i></div>
+        </div>
     </div>
     <div class="rela-block drop-down-container">
-        <div class="drop-down-item">Service</div>
+        <div class="drop-down-item"><a href="/facility" style="text-decoration: none; color: white">Facility</a></div>
     </div>
     <div class="rela-block drop-down-container">
-        <div class="drop-down-item">Contract</div>
+        <div class="drop-down-item"><a href="/contract" style="text-decoration: none; color: white">Contract</a></div>
     </div>
-<!--        <div class="rela-block drop-down-container">-->
-<!--            <div class="drop-down-item"></div>-->
-<!--        </div>-->
-<!--        <div class="rela-block drop-down-container">-->
-<!--            <div class="drop-down-item"></div>-->
-<!--        </div>-->
+    <div class="rela-block drop-down-container">
+        <div class="drop-down-item"></div>
+    </div>
+    <div class="rela-block drop-down-container">
+        <div class="drop-down-item"></div>
+    </div>
 </div>
-<!--<div class="rela-block deer-section"></div>-->
-<!--<div class="rela-block second-section cover-before">-->
-<!--    <div class="big-floaty-image">-->
-<!--&lt;!&ndash;        <p class="absolute-center-text">FURAMA RESORT</p>&ndash;&gt;-->
-<!--    </div>-->
-<!--</div>-->
-<!--<div class="rela-block third-section cover-before">-->
-<!--    <p class="absolute-center-text">Tinh tế bản nguyên cuộc sống<br><br>Fantasticity!</p>-->
-<!--</div>-->
-<!--<div class="rela-block fourth-section">-->
-<!--    <p class="hover-pointer"></p>-->
-<!--    <div class="rela-block color-square-container">-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--        <div class="color-changing-square"></div>-->
-<!--    </div>-->
-<!--    <div class="rela-block big-back-text-container">-->
-<!--        <h1 class="big-back-text">FURAMA RESORT</h1>-->
-<!--    </div>-->
+<div class="rela-block deer-section"></div>
+<div class="rela-block second-section cover-before">
+    <div class="big-floaty-image">
+        <!--        <p class="absolute-center-text">FURAMA RESORT</p>-->
+    </div>
+</div>
+<div class="rela-block third-section cover-before">
+    <p class="absolute-center-text">Tinh tế bản nguyên cuộc sống<br><br>Fantasticity!</p>
+</div>
+<div class="rela-block fourth-section">
+    <p class="hover-pointer"></p>
+    <div class="rela-block color-square-container">
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+        <div class="color-changing-square"></div>
+    </div>
+    <div class="rela-block big-back-text-container">
+        <h1 class="big-back-text">FURAMA RESORT</h1>
+    </div>
 </div>
 <div class="rela-block footer">
     <div class="rela-block social-buttons-container">
