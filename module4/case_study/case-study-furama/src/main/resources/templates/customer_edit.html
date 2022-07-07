@@ -7,10 +7,10 @@
 </head>
 <body>
 <nav th:replace="~{layout :: navbar}"></nav>
-<h1 style="text-align: center">EDIT FACILITY</h1>
+<h1 style="text-align: center">EDIT CUSTOMER</h1>
 
 <div class="col-6 mx-auto">
-    <form th:action="@{/facility/save}" th:object="${facility}"
+    <form th:action="@{/customer/save}" th:object="${customer}"
           method="POST" novalidate="novalidate">
         <table border="1" cellpadding="5" class="table table-striped table-dark">
             <input type="hidden" th:field="*{id}"/>
@@ -21,99 +21,53 @@
                 </td>
             </tr>
             <tr>
-                <th>Area:</th>
+                <th>Day Of Birth:</th>
                 <td>
-                    <input type="text" th:field="*{area}" class="form-control"/>
+                    <input type="date" th:field="*{dateOfBirth}" class="form-control"/>
                 </td>
             </tr>
             <tr>
-                <th>Max People:</th>
+                <th>Gender:</th>
                 <td>
-                    <input type="text" th:field="*{maxPeople}" class="form-control"/>
-                </td>
-            </tr>
-            <tr>
-                <th>Cost:</th>
-                <td>
-                    <input type="text" th:field="*{cost}" class="form-control"/>
-                </td>
-            </tr>
-            <tr>
-                <th>Rent Type :</th>
-                <td>
-                    <select th:field="*{rentType}" class="form-select">
-                        <option th:each="rentTypeObj : ${rentTypeList}"
-                                th:text="${rentTypeObj.name}"
-                                th:value="${rentTypeObj.id}">
-                        </option>
+                    <select th:field="${customer}" class="custom-select">
+                        <option value="1">Nam</option>
+                        <option value="0">Nữ</option>
                     </select>
                 </td>
             </tr>
             <tr>
-                <th>Facility Type :</th>
+                <th>Id Card:</th>
                 <td>
-                    <select th:field="*{facilityType}" class="form-select" id="facility_select">
-                        <option value="">Choose Facility Type</option>
-                        <option th:each="facilityTypeObj : ${facilityTypeList}"
-                                th:text="${facilityTypeObj.name}"
-                                th:value="${facilityTypeObj.id}">
+                    <input type="text" th:field="*{idCard}" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Phone Number:</th>
+                <td>
+                    <input type="text" th:field="*{phoneNumber}" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td>
+                    <input type="text" th:field="*{email}" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Address:</th>
+                <td>
+                    <input type="text" th:field="*{address}" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Customer Type:</th>
+                <td>
+                    <select th:field="*{customerType}" class="form-select">
+                        <option th:each="customerTypeObj : ${customerTypeList}"
+                                th:text="${customerTypeObj.name}"
+                                th:value="${customerTypeObj.id}">
                         </option>
                     </select>
-                </td>
-            </tr>
-
-
-            <!--            Villa-->
-            <tr class="villa">
-                <th>Standard Room:</th>
-                <td>
-                    <input type="text" th:field="*{standardRoom}" class="form-control"/>
-                </td>
-            </tr>
-            <tr class="villa">
-                <th>Description Other Convenience:</th>
-                <td>
-                    <input type="text" th:field="*{descriptionOtherConvenience}" class="form-control"/>
-                </td>
-            </tr>
-            <tr class="villa">
-                <th>Pool Area:</th>
-                <td>
-                    <input type="text" th:field="*{poolArea}" class="form-control"/>
-                </td>
-            </tr>
-            <tr class="villa">
-                <th>Number Of Floors:</th>
-                <td>
-                    <input type="text" th:field="*{numberOfFloors}" class="form-control"/>
-                </td>
-            </tr>
-
-            <!--            Room-->
-            <tr class="room">
-                <th>Facility Free:</th>
-                <td>
-                    <input type="text" th:field="*{facilityFree}" class="form-control">
-                </td>
-            </tr>
-
-            <!--            House-->
-            <tr class="house">
-                <th>Standard Room:</th>
-                <td>
-                    <input type="text" th:field="*{standardRoom}" class="form-control"/>
-                </td>
-            </tr>
-            <tr class="house">
-                <th>Description Other Convenience:</th>
-                <td>
-                    <input type="text" th:field="*{descriptionOtherConvenience}" class="form-control"/>
-                </td>
-            </tr>
-            <tr class="house">
-                <th>Number Of Floors:</th>
-                <td>
-                    <input type="text" th:field="*{numberOfFloors}" class="form-control"/>
                 </td>
             </tr>
             <tr>
@@ -137,7 +91,7 @@
 <th:block th:replace="~{layout :: jsMDB}"></th:block>
 </body>
 </html>
- MDB
+MDB
 <script
         type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"

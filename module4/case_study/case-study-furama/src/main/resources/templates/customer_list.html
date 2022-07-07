@@ -620,146 +620,16 @@
             }
         }
 
-        @-moz-keyframes colorChange {
-            0% {
-                background-color: #e91e63;
-            }
-            11% {
-                background-color: #f44336;
-            }
-            22% {
-                background-color: #ff9800;
-            }
-            33% {
-                background-color: #ffeb3b;
-            }
-            44% {
-                background-color: #8bc34a;
-            }
-            55% {
-                background-color: #009688;
-            }
-            66% {
-                background-color: #00bcd4;
-            }
-            77% {
-                background-color: #2196f3;
-            }
-            88% {
-                background-color: #673ab7;
-            }
-            100% {
-                background-color: #9c27b0;
-            }
-        }
-
-        @-webkit-keyframes colorChange {
-            0% {
-                background-color: #e91e63;
-            }
-            11% {
-                background-color: #f44336;
-            }
-            22% {
-                background-color: #ff9800;
-            }
-            33% {
-                background-color: #ffeb3b;
-            }
-            44% {
-                background-color: #8bc34a;
-            }
-            55% {
-                background-color: #009688;
-            }
-            66% {
-                background-color: #00bcd4;
-            }
-            77% {
-                background-color: #2196f3;
-            }
-            88% {
-                background-color: #673ab7;
-            }
-            100% {
-                background-color: #9c27b0;
-            }
-        }
-
-        @-o-keyframes colorChange {
-            0% {
-                background-color: #e91e63;
-            }
-            11% {
-                background-color: #f44336;
-            }
-            22% {
-                background-color: #ff9800;
-            }
-            33% {
-                background-color: #ffeb3b;
-            }
-            44% {
-                background-color: #8bc34a;
-            }
-            55% {
-                background-color: #009688;
-            }
-            66% {
-                background-color: #00bcd4;
-            }
-            77% {
-                background-color: #2196f3;
-            }
-            88% {
-                background-color: #673ab7;
-            }
-            100% {
-                background-color: #9c27b0;
-            }
-        }
-
-        @keyframes colorChange {
-            0% {
-                background-color: #e91e63;
-            }
-            11% {
-                background-color: #f44336;
-            }
-            22% {
-                background-color: #ff9800;
-            }
-            33% {
-                background-color: #ffeb3b;
-            }
-            44% {
-                background-color: #8bc34a;
-            }
-            55% {
-                background-color: #009688;
-            }
-            66% {
-                background-color: #00bcd4;
-            }
-            77% {
-                background-color: #2196f3;
-            }
-            88% {
-                background-color: #673ab7;
-            }
-            100% {
-                background-color: #9c27b0;
-            }
-        }
-
     </style>
 </head>
 
 <body>
 <div class="fixed-nav-bar">
-    <div class="logo" style="font-size: 50px"><span><a href="/home" style="text-decoration: none">FURAMA</a></span>
+    <div class="logo" style="font-size: 50px">
+        <span><a href="/home" style="text-decoration: none; color: #ef853e" >FURAMA</a></span>
         Resort
     </div>
+    <h1 style="text-align: center; margin-top: 40px">CUSTOMER LIST</h1>
     <input type="checkbox" id="menuButton"/>
     <label for="menuButton" class="menu-button-label">
         <div class="white-bar"></div>
@@ -767,76 +637,148 @@
         <div class="white-bar"></div>
         <div class="white-bar"></div>
     </label>
+    <div class="container-1">
+        <form class="d-flex input-group w-auto" action="/blog" style="margin-bottom: 10px">
+            <input
+                    type="text"
+                    name="keyword"
+                    class="form-control  rounded"
+                    placeholder="Search"
+                    aria-label="Search"
+                    aria-describedby="search-addon"
+                    style="max-width: 250px"
+            />
+            <span class="input-group-text text-white border-0" id="search-addon">
+                <button  type="submit" class="btn btn-rounded"><i class="fas fa-search" style="font-size: 13pt" ></i></button>
+            </span>
+        </form>
+    </div>
 </div>
-<div class="the-bass" style="text-align: center">
+<div class="the-bass">
     <div class="rela-block drop-down-container">
-        <div class="drop-down-item">
-            <div><a href="/employee" style="text-decoration: none; color: white">Employee</a></div>
-            <div><i class="fas fa-user-tie"></i></div>
+        <div class="drop-down-item">Employee</div>
+    </div>
+    <div class="rela-block drop-down-container">
+        <div class="drop-down-item">Customer</div>
+    </div>
+    <div class="rela-block drop-down-container">
+        <div class="drop-down-item">Facility</div>
+    </div>
+    <div class="rela-block drop-down-container">
+        <div class="drop-down-item">Contract</div>
+    </div>
+</div>
+<table class="table" style="margin-top: 10px; font-family: sans-serif">
+    <thead class="white-text">
+    <div class="notify">
+        <div th:if="${success}">
+            <span th:text="${success}"></span>
         </div>
     </div>
-    <div class="rela-block drop-down-container">
-        <div class="drop-down-item">
-            <div><a href="/customer" style="text-decoration: none; color: white">Customer</a></div>
-            <div><i class="fas fa-users"></i></div>
-        </div>
-    </div>
-    <div class="rela-block drop-down-container">
-        <div class="drop-down-item">
-            <div><a href="/facility" style="text-decoration: none; color: white">Facility</a></div>
-            <div><i class="fas fa-tools"></i></div>
-        </div>
-    </div>
-    <div class="rela-block drop-down-container">
-        <div class="drop-down-item">
-           <div><a href="/contract" style="text-decoration: none; color: white">Contract</a></div>
-           <div><i class="fas fa-file-signature"></i></div>
-        </div>
+    <p style="margin-top: 150px">
+        <a th:href="@{/customer/create}">
+            <i style="margin-left: 40px; font-size: 40pt; color: #4F4F4F" class="fas fa-plus-square"></i>
+        </a>
+    </p>
+    <tr style="background-color: black; color: white">
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Day Of Birth</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Id Card</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Customer Type</th>
+        <th scope="col" style="text-align: center">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="customerObj, loop : ${customerList}">
+        <th scope="row" th:text="${loop.count}"></th>
+        <td th:text="${customerObj.name}"></td>
+        <td th:text="${customerObj.dateOfBirth}"></td>
+        <td th:text="${customerObj.gender}"></td>
+        <td th:text="${customerObj.idCard}"></td>
+        <td th:text="${customerObj.phoneNumber}"></td>
+        <td th:text="${customerObj.email}"></td>
+        <td th:text="${customerObj.address}"></td>
+        <td th:text="${customerObj.customerType.name}"></td>
+        <td class="d-flex justify-content-between">
+            <button type="button" class="btn btn-rounded">
+                <a th:href="@{/customer/{id}/edit(id=${customerObj.getId()})}">
+                    <i style="font-size: x-large; color: #4F4F4F" class="fas fa-user-edit"></i>
+                </a>
+            </button>
+            <br>
+            <button type="button" class="btn btn-rounded">
+                <a th:href="@{/customer/{id}/view(id=${customerObj.getId()})}">
+                    <i style="font-size: x-large; color: #00bcd4" class="fas fa-eye"></i>
+                </a>
+            </button>
+            <br>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-danger btn-rounded" data-mdb-toggle="modal"
+                    th:data-mdb-target="'#staticBackdrop' + ${customerObj.id}">
+                <i style="color: white; font-size: x-large" class="fas fa-trash-alt"></i>
+            </button>
+
+            <!-- Modal -->
+            <div
+                    class="modal fade"
+                    th:id="'staticBackdrop' + ${customerObj.id}"
+                    data-mdb-backdrop="static"
+                    data-mdb-keyboard="false"
+                    tabindex="-1"
+                    aria-labelledby="staticBackdropLabel"
+                    aria-hidden="true"
+            >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-mdb-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h4>Bạn có chắc muốn xóa blog</h4> <br>
+                            <p>ID:
+                                <span th:text="${customerObj.id}"></span>
+                            </p>
+                            <p>Name:
+                                <span th:text="${customerObj.name}"></span>
+                            </p>
+                            <p style="color: red">Lưu ý: Xóa rồi không thể hoàn tác!</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                            <a th:href="@{/customer/{id}/delete(id=${customerObj.getId()})}"
+                               class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div class="row" style="text-align: center">
+    <div class="coll-lg-12">
+        <a th:if="${customerList.hasPrevious()}"
+           th:href="@{/customer/(page=${customerList.number - 1}, keyword=${keywordVal})}">
+            <i class="fas fa-chevron-circle-left" style="color: black"></i>
+        </a>
+        <span th:text="${customerList.number + 1}"></span>
+        /
+        <span th:text="${customerList.totalPages}"></span>
+        <a th:if="${customerList.hasNext()}"
+           th:href="@{/customer/(page=${customerList.number + 1}, keyword=${keywordVal})}">
+            <i class="fas fa-chevron-circle-right" style="color: black"></i>
+        </a>
     </div>
 </div>
-<div class="rela-block deer-section"></div>
-<div class="rela-block second-section cover-before">
-    <div class="big-floaty-image">
-        <!--        <p class="absolute-center-text">FURAMA RESORT</p>-->
-    </div>
-</div>
-<div class="rela-block third-section cover-before">
-    <p class="absolute-center-text">Tinh tế bản nguyên cuộc sống<br><br>Fantasticity!</p>
-</div>
-<div class="rela-block fourth-section">
-    <p class="hover-pointer"></p>
-    <div class="rela-block color-square-container">
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-        <div class="color-changing-square"></div>
-    </div>
-    <div class="rela-block big-back-text-container">
-        <h1 class="big-back-text">FURAMA RESORT</h1>
-    </div>
-</div>
-<div class="rela-block footer">
+
+<div class="rela-block footer" style="margin-top: 30px">
     <div class="rela-block social-buttons-container">
         <div class="social-button facebook-button"></div>
         <div class="social-button insta-button"></div>
@@ -874,7 +816,6 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -903,3 +844,7 @@
 
     });
 </script>
+<script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"
+></script>

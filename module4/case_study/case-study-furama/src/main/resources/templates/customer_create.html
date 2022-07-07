@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{layout :: MDBootstrap}"></th:block>
+</head>
+<body>
+<nav th:replace="~{layout :: navbar}"></nav>
+<h1 style="text-align: center">ADD CUSTOMER</h1>
+
+<div class="col-6 mx-auto">
+    <form th:action="@{/customer/save}" th:object="${customer}"
+          method="POST" novalidate="novalidate">
+        <table border="1" cellpadding="5" class="table table-striped table-dark">
+            <input type="hidden" th:field="*{id}"/>
+            <tr>
+                <th>Name:</th>
+                <td>
+                    <input type="text" th:field="*{name}" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Day Of Birth:</th>
+                <td>
+                    <input type="date" th:field="*{dateOfBirth}" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Gender:</th>
+                <td>
+                    <select th:field="${customer}" class="custom-select">
+                        <option value="1">Nam</option>
+                        <option value="0">Nữ</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Id Card:</th>
+                <td>
+                    <input type="text" th:field="*{idCard}" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Phone Number:</th>
+                <td>
+                    <input type="text" th:field="*{phoneNumber}" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td>
+                    <input type="text" th:field="*{email}" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Address:</th>
+                <td>
+                    <input type="text" th:field="*{address}" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Customer Type:</th>
+                <td>
+                    <select th:field="*{customerType}" class="form-select">
+                        <option th:each="customerTypeObj : ${customerTypeList}"
+                                th:text="${customerTypeObj.name}"
+                                th:value="${customerTypeObj.id}">
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Save" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button class="btn" style="background: azure">
+                        <a style="text-decoration: none; color: black" th:href="@{/customer}">Back to list</a>
+                    </button>
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+
+<footer th:replace="~{layout :: footer}"></footer>
+
+<th:block th:replace="~{layout :: jsMDB}"></th:block>
+</body>
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+</script>
