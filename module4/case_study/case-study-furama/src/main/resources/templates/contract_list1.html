@@ -626,10 +626,10 @@
 <body>
 <div class="fixed-nav-bar">
     <div class="logo" style="font-size: 50px">
-        <span><a href="/home" style="text-decoration: none; color: #ef853e" >FURAMA</a></span>
+        <span><a href="/home" style="text-decoration: none; color: #ef853e">FURAMA</a></span>
         Resort
     </div>
-    <h1 style="text-align: center; margin-top: 40px">FACILITY LIST</h1>
+    <h1 style="text-align: center; margin-top: 40px">CUSTOMER LIST</h1>
     <input type="checkbox" id="menuButton"/>
     <label for="menuButton" class="menu-button-label">
         <div class="white-bar"></div>
@@ -638,7 +638,7 @@
         <div class="white-bar"></div>
     </label>
     <div class="container-1">
-        <form class="d-flex input-group w-auto" action="/blog" style="margin-bottom: 10px">
+        <form class="d-flex input-group w-auto" action="/customer" style="margin-bottom: 10px">
             <input
                     type="text"
                     name="keyword"
@@ -649,7 +649,8 @@
                     style="max-width: 250px"
             />
             <span class="input-group-text text-white border-0" id="search-addon">
-                <button  type="submit" class="btn btn-rounded"><i class="fas fa-search" style="font-size: 13pt" ></i></button>
+                <button type="submit" class="btn btn-rounded"><i class="fas fa-search"
+                                                                 style="font-size: 13pt"></i></button>
             </span>
         </form>
     </div>
@@ -688,67 +689,64 @@
         </div>
     </div>
     <p style="margin-top: 150px">
-        <a th:href="@{/facility/create}">
+        <a th:href="@{/contract/create}">
             <i style="margin-left: 40px; font-size: 40pt; color: #4F4F4F" class="fas fa-plus-square"></i>
         </a>
     </p>
     <tr style="background-color: black; color: white">
-        <!--        <th scope="col">#</th>-->
-        <th scope="col">Id</th>
-        <th scope="col">Name</th>
-        <th scope="col">Area</th>
-        <th scope="col">Max People</th>
-        <th scope="col">Rent Type</th>
-        <th scope="col">Facility Type</th>
-        <th scope="col">Standard Room</th>
-        <th scope="col">Pool Area</th>
-        <th scope="col">Number Of Floors</th>
-        <th scope="col">Facility Free</th>
+        <th scope="col">#</th>
+        <th scope="col">Facility</th>
+        <th scope="col">Customer</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Deposit</th>
+        <th scope="col">Total Money</th>
         <th scope="col" style="text-align: center">Action</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="facilityObj, loop : ${facilityList}">
-        <!--        <th scope="row" th:text="${loop.count}"></th>-->
-        <td th:text="${facilityObj.id}"></td>
-        <td th:text="${facilityObj.name}"></td>
-        <td th:text="${facilityObj.area}"></td>
-        <td th:text="${facilityObj.maxPeople}"></td>
-        <td th:text="${facilityObj.rentType.name}"></td>
-        <td th:text="${facilityObj.facilityType.name}"></td>
-        <td th:text="${facilityObj.standardRoom}"></td>
-        <td th:text="${facilityObj.poolArea}"></td>
-        <td th:text="${facilityObj.numberOfFloors}"></td>
-        <td th:text="${facilityObj.facilityFree}"></td>
+    <tr th:each="contractObj, loop : ${contractList}">
+        <th scope="row" th:text="${loop.count}"></th>
+        <td th:text="${contractObj.facility.name}"></td>
+        <td th:text="${contractObj.customer.name}"></td>
+        <td th:text="${contractObj.startDate}"></td>
+        <td th:text="${contractObj.endDate}"></td>
+        <td th:text="${contractObj.deposit}"></td>
+        <td th:text="${contractObj.totalMoney}"></td>
         <td class="d-flex justify-content-between">
-            <button type="button" class="btn btn-rounded">
-                <a th:href="@{/facility/{id}/edit(id=${facilityObj.getId()})}">
-                    <i style="font-size: x-large; color: #4F4F4F" class="fas fa-user-edit"></i>
-                </a>
-            </button>
-            <br>
-            <button type="button" class="btn btn-rounded">
-                <a th:href="@{/facility/{id}/view(id=${facilityObj.getId()})}">
-                    <i style="font-size: x-large; color: #00bcd4" class="fas fa-eye"></i>
-                </a>
-            </button>
-            <br>
+            <!--            <button type="button" class="btn btn-rounded">-->
+            <!--                <a th:href="@{/contractDetail/create}">-->
+            <!--                    <i style="margin-left: 40px; font-size: 40pt; color: #4F4F4F" class="fas fa-plus-square"></i>-->
+            <!--                </a>-->
+            <!--            </button>-->
+            <!--            <br>-->
+            <!--            <button type="button" class="btn btn-rounded">-->
+            <!--&lt;!&ndash;                <a th:href="@{/customer/{id}/view(id=${customerObj.getId()})}">&ndash;&gt;-->
+            <!--&lt;!&ndash;                    <i style="font-size: x-large; color: #00bcd4" class="fas fa-eye"></i>&ndash;&gt;-->
+            <!--&lt;!&ndash;                </a>&ndash;&gt;-->
+            <!--            </button>-->
+            <!--            <br>-->
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-danger btn-rounded" data-mdb-toggle="modal"
-                    th:data-mdb-target="'#staticBackdrop' + ${facilityObj.id}">
-                <i style="color: white; font-size: x-large" class="fas fa-trash-alt"></i>
+<!--                        <button type="button" class="btn btn-danger btn-rounded" data-mdb-toggle="modal"-->
+<!--                                data-mdb-target="#staticBackdrop">-->
+<!--                            <i style="color: white; font-size: x-large" class="fas fa-trash-alt"></i>-->
+<!--                        </button>-->
+
+
+            <!--             Button trigger modal-->
+            <button type="button" class="btn btn-rounded" data-mdb-toggle="modal"
+                    th:data-mdb-target="'#staticBackdrop' + ${contractObj.id}">
+                <i style="font-size: 40pt; color: #4F4F4F" class="fas fa-plus-square"></i>
             </button>
 
             <!-- Modal -->
-            <div
-                    class="modal fade"
-                    th:id="'staticBackdrop' + ${facilityObj.id}"
-                    data-mdb-backdrop="static"
-                    data-mdb-keyboard="false"
-                    tabindex="-1"
-                    aria-labelledby="staticBackdropLabel"
-                    aria-hidden="true"
-            >
+            <div class="modal fade"
+                 th:id="'staticBackdrop' + ${contractObj.id}"
+                 data-mdb-backdrop="static"
+                 data-mdb-keyboard="false"
+                 tabindex="-1"
+                 aria-labelledby="staticBackdropLabel"
+                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -756,21 +754,83 @@
                             <button type="button" class="btn-close" data-mdb-dismiss="modal"
                                     aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                            <h4>Bạn có chắc muốn xóa blog</h4> <br>
-                            <p>ID:
-                                <span th:text="${facilityObj.id}"></span>
-                            </p>
-                            <p>Name:
-                                <span th:text="${facilityObj.name}"></span>
-                            </p>
-                            <p style="color: red">Lưu ý: Xóa rồi không thể hoàn tác!</p>
+                        <div class="modal-body" style="text-align: center">
+                            <h4>ADD CONTRACT</h4> <br>
+                            <div class="col-12 mx-auto">
+                                <form th:action="@{/contract/save}" th:object="${contract}"
+                                      method="POST" novalidate="novalidate">
+                                    <table border="1" class="table table-striped table-dark" style="margin-right: 30px">
+                                        <input type="hidden" th:field="*{id}"/>
+                                        <tr>
+                                            <th>Start Date:</th>
+                                            <td>
+                                                <input type="date" th:field="*{startDate}" class="form-control"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>End Date:</th>
+                                            <td>
+                                                <input type="date" th:field="*{endDate}" class="form-control"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Deposit:</th>
+                                            <td>
+                                                <input type="text" th:field="*{deposit}" class="form-control"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Total Money:</th>
+                                            <td>
+                                                <input type="text" th:field="*{totalMoney}" class="form-control"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Service Customers:</th>
+                                            <td>
+                                                <select th:field="*{customer}" class="form-select">
+                                                    <option th:each="customerObj : ${customerList}"
+                                                            th:text="${customerObj.name}"
+                                                            th:value="${customerObj.id}">
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Facility:</th>
+                                            <td>
+                                                <select th:field="*{facility}" class="form-select">
+                                                    <option th:each="facilityObj : ${facilityList}"
+                                                            th:text="${facilityObj.name}"
+                                                            th:value="${facilityObj.id}">
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Attach Facility:</th>
+                                            <td>
+                                                <select th:field="*{contractDetails}" class="form-select">
+                                                    <option th:each="contractDetailObj : ${contractDetailList}"
+                                                            th:text="${contractDetailObj.attacFacility.name}"
+                                                            th:value="${contractDetailObj.attacFacility.id}">
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close
+                                        </button>
+                                        <input type="submit" value="Create new contract" class="form-control"/>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
-                            <a th:href="@{/facility/{id}/delete(id=${facilityObj.getId()})}"
-                               class="btn btn-danger">Delete</a>
-                        </div>
+<!--                        <div class="modal-footer">-->
+<!--                            <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>-->
+<!--                            <input type="submit" value="Create new contract" class="form-control"/>-->
+<!--                        </div>-->
                     </div>
                 </div>
             </div>
@@ -780,15 +840,15 @@
 </table>
 <div class="row" style="text-align: center">
     <div class="coll-lg-12">
-        <a th:if="${facilityList.hasPrevious()}"
-           th:href="@{/facility/(page=${facilityList.number - 1}, keyword=${keywordVal})}">
+        <a th:if="${contractList.hasPrevious()}"
+           th:href="@{/contrat/(page=${contractList.number - 1})}">
             <i class="fas fa-chevron-circle-left" style="color: black"></i>
         </a>
-        <span th:text="${facilityList.number + 1}"></span>
+        <span th:text="${contractList.number + 1}"></span>
         /
-        <span th:text="${facilityList.totalPages}"></span>
-        <a th:if="${facilityList.hasNext()}"
-           th:href="@{/facility/(page=${facilityList.number + 1}, keyword=${keywordVal})}">
+        <span th:text="${contractList.totalPages}"></span>
+        <a th:if="${contractList.hasNext()}"
+           th:href="@{/contract/(page=${contractList.number + 1})}">
             <i class="fas fa-chevron-circle-right" style="color: black"></i>
         </a>
     </div>
@@ -835,6 +895,10 @@
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"
+></script>
 <script>
     $(document).ready(function () {
 
@@ -860,7 +924,27 @@
 
     });
 </script>
-<script
-        type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"
-></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!--<script>-->
+
+<!--    $("#name-facility").change(function () {-->
+<!--        let a = $("#name-facility").val();-->
+<!--        $.ajax({-->
+<!--            headers: {-->
+<!--                'Accept': 'application/json',-->
+<!--                'Content-Type': 'application/json'-->
+<!--            },-->
+<!--            type: "GET", //GET, DELETE, PUT...-->
+<!--            url: "http://localhost:8080/api/contract/" + a + "/facility",-->
+<!--            success: function (resultSuccess) {-->
+<!--                let html = `<span>${resultSuccess.facility.cost}</span>`-->
+<!--                $("#total").html(html);-->
+<!--            },-->
+<!--            error: function (resultError) {-->
+<!--                console.log(resultError);-->
+<!--                $("#pError").text(resultError.responseJSON[0].defaultMessage);-->
+<!--            }-->
+<!--        })-->
+<!--    })-->
+
+<!--</script>-->

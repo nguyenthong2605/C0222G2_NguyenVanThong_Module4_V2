@@ -626,10 +626,10 @@
 <body>
 <div class="fixed-nav-bar">
     <div class="logo" style="font-size: 50px">
-        <span><a href="/home" style="text-decoration: none; color: #ef853e" >FURAMA</a></span>
+        <span><a href="/home" style="text-decoration: none; color: #ef853e">FURAMA</a></span>
         Resort
     </div>
-    <h1 style="text-align: center; margin-top: 40px">FACILITY LIST</h1>
+    <h1 style="text-align: center; margin-top: 40px">CUSTOMER LIST</h1>
     <input type="checkbox" id="menuButton"/>
     <label for="menuButton" class="menu-button-label">
         <div class="white-bar"></div>
@@ -638,9 +638,10 @@
         <div class="white-bar"></div>
     </label>
     <div class="container-1">
-        <form class="d-flex input-group w-auto" action="/blog" style="margin-bottom: 10px">
+        <form class="d-flex input-group w-auto" action="/customer" style="margin-bottom: 10px">
             <input
                     type="text"
+                    id="keyword"
                     name="keyword"
                     class="form-control  rounded"
                     placeholder="Search"
@@ -649,7 +650,8 @@
                     style="max-width: 250px"
             />
             <span class="input-group-text text-white border-0" id="search-addon">
-                <button  type="submit" class="btn btn-rounded"><i class="fas fa-search" style="font-size: 13pt" ></i></button>
+                <button type="submit" class="btn btn-rounded" id="btnSearch"><i class="fas fa-search"
+                                                                 style="font-size: 13pt"></i></button>
             </span>
         </form>
     </div>
@@ -688,109 +690,41 @@
         </div>
     </div>
     <p style="margin-top: 150px">
-        <a th:href="@{/facility/create}">
+        <a th:href="@{/customer/create}">
             <i style="margin-left: 40px; font-size: 40pt; color: #4F4F4F" class="fas fa-plus-square"></i>
         </a>
     </p>
     <tr style="background-color: black; color: white">
-        <!--        <th scope="col">#</th>-->
-        <th scope="col">Id</th>
+        <th scope="col">#</th>
         <th scope="col">Name</th>
-        <th scope="col">Area</th>
-        <th scope="col">Max People</th>
-        <th scope="col">Rent Type</th>
-        <th scope="col">Facility Type</th>
-        <th scope="col">Standard Room</th>
-        <th scope="col">Pool Area</th>
-        <th scope="col">Number Of Floors</th>
-        <th scope="col">Facility Free</th>
+        <th scope="col">Day Of Birth</th>
+        <th scope="col">Id Card</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Position</th>
+        <th scope="col">Education Degree</th>
+        <th scope="col">Division</th>
         <th scope="col" style="text-align: center">Action</th>
     </tr>
     </thead>
-    <tbody>
-    <tr th:each="facilityObj, loop : ${facilityList}">
-        <!--        <th scope="row" th:text="${loop.count}"></th>-->
-        <td th:text="${facilityObj.id}"></td>
-        <td th:text="${facilityObj.name}"></td>
-        <td th:text="${facilityObj.area}"></td>
-        <td th:text="${facilityObj.maxPeople}"></td>
-        <td th:text="${facilityObj.rentType.name}"></td>
-        <td th:text="${facilityObj.facilityType.name}"></td>
-        <td th:text="${facilityObj.standardRoom}"></td>
-        <td th:text="${facilityObj.poolArea}"></td>
-        <td th:text="${facilityObj.numberOfFloors}"></td>
-        <td th:text="${facilityObj.facilityFree}"></td>
-        <td class="d-flex justify-content-between">
-            <button type="button" class="btn btn-rounded">
-                <a th:href="@{/facility/{id}/edit(id=${facilityObj.getId()})}">
-                    <i style="font-size: x-large; color: #4F4F4F" class="fas fa-user-edit"></i>
-                </a>
-            </button>
-            <br>
-            <button type="button" class="btn btn-rounded">
-                <a th:href="@{/facility/{id}/view(id=${facilityObj.getId()})}">
-                    <i style="font-size: x-large; color: #00bcd4" class="fas fa-eye"></i>
-                </a>
-            </button>
-            <br>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-danger btn-rounded" data-mdb-toggle="modal"
-                    th:data-mdb-target="'#staticBackdrop' + ${facilityObj.id}">
-                <i style="color: white; font-size: x-large" class="fas fa-trash-alt"></i>
-            </button>
-
-            <!-- Modal -->
-            <div
-                    class="modal fade"
-                    th:id="'staticBackdrop' + ${facilityObj.id}"
-                    data-mdb-backdrop="static"
-                    data-mdb-keyboard="false"
-                    tabindex="-1"
-                    aria-labelledby="staticBackdropLabel"
-                    aria-hidden="true"
-            >
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                            <button type="button" class="btn-close" data-mdb-dismiss="modal"
-                                    aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <h4>Bạn có chắc muốn xóa blog</h4> <br>
-                            <p>ID:
-                                <span th:text="${facilityObj.id}"></span>
-                            </p>
-                            <p>Name:
-                                <span th:text="${facilityObj.name}"></span>
-                            </p>
-                            <p style="color: red">Lưu ý: Xóa rồi không thể hoàn tác!</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
-                            <a th:href="@{/facility/{id}/delete(id=${facilityObj.getId()})}"
-                               class="btn btn-danger">Delete</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </td>
-    </tr>
+    <tbody id="bodyEmployee">
     </tbody>
 </table>
 <div class="row" style="text-align: center">
     <div class="coll-lg-12">
-        <a th:if="${facilityList.hasPrevious()}"
-           th:href="@{/facility/(page=${facilityList.number - 1}, keyword=${keywordVal})}">
-            <i class="fas fa-chevron-circle-left" style="color: black"></i>
-        </a>
-        <span th:text="${facilityList.number + 1}"></span>
-        /
-        <span th:text="${facilityList.totalPages}"></span>
-        <a th:if="${facilityList.hasNext()}"
-           th:href="@{/facility/(page=${facilityList.number + 1}, keyword=${keywordVal})}">
-            <i class="fas fa-chevron-circle-right" style="color: black"></i>
-        </a>
+        <nav aria-label="..." class="d-flex justify-content-center">
+            <ul class="pagination">
+                <li class="page-item">
+                    <button class="page-link" id="aPrevious">Previous</button>
+                </li>
+                <li class="page-item disabled" id="pageNumber">/</li>
+                <li class="page-item">
+                    <button class="page-link" id="aNext">Next</button>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>
 
@@ -860,7 +794,75 @@
 
     });
 </script>
-<script
-        type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"
-></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+    let curPage = 0;
+    let total = 0;
+
+    function getPageEmployee(pageNumber = 0, keyword = "") {
+        console.log(keyword)
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "GET", //GET, DELETE, PUT...\
+            // url: "http://localhost:8080/api/blog?page=" + pageNumber,
+            url: "http://localhost:8080/api/employee?page=" + pageNumber + "&keyword=" + keyword,
+            success: function (data) {
+                console.log(data);
+                total = data.totalElements;
+                // console.log(pageStudent.content);
+                let outHTML = "";
+                let count = 1;
+                for (let employeeObj of data.content) {
+                    outHTML += `<tr>
+                                    <td>${count++}</td>
+                                    <td>${employeeObj.name}</td>
+                                    <td>${employeeObj.dayOfBirth}</td>
+                                    <td>${employeeObj.idCard}</td>
+                                    <td>${employeeObj.salary}</td>
+                                    <td>${employeeObj.phoneNumber}</td>
+                                    <td>${employeeObj.email}</td>
+                                    <td>${employeeObj.address}</td>
+                                    <td>${employeeObj.position.name}</td>
+                                    <td>${employeeObj.educationDegree.name}</td>
+                                    <td>${employeeObj.division.name}</td>
+                                    <td>
+                                        <a href="#">Update</a>
+                                    </td>
+                                    <td>
+                                        <a href="#">Delete</a>
+                                    </td>
+                                </tr>`;
+                }
+
+                $("#bodyStudent").html(outHTML);
+                $("#pageNumber").html((1 + data.number) + "/" + (Math.ceil(total / 3)));
+                if (data.number == data.totalPages - 1) {
+                    $("#aNext").prop("disable", true)
+                } else {
+                    $("#aNext").click(function () {
+                        getPageEmployee(data.number + 1);
+                    })
+                }
+                if (data.number == 0) {
+                    $("#aPrevious").prop("disable", true)
+                } else {
+                    $("#aPrevious").click(function () {
+                        getPageEmployee(data.number - 1)
+                    })
+                }
+            },
+            error: function (resultError) {
+                console.log(resultError);
+            }
+        });
+    }
+
+    $('#btnSearch').click(function () {
+        let kq = $('#keyword').val();
+        getPageEmployee(0, kq);
+    })
+    getPageEmployee(curPage,);
+</script>

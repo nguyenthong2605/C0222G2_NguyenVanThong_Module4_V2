@@ -1,6 +1,9 @@
 package com.codgym.casestudyfurama.model.facility;
 
+import com.codgym.casestudyfurama.model.contract.Contract;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Facility {
@@ -36,10 +39,13 @@ public class Facility {
     @Column(columnDefinition = "TEXT")
     private String facilityFree;
 
+    @OneToMany(mappedBy = "facility")
+    private List<Contract> contracts;
+
     public Facility() {
     }
 
-    public Facility(Integer id, String name, Integer area, Double cost, Integer maxPeople, FacilityType facilityType, RentType rentType, String standardRoom, String descriptionOtherConvenience, Double poolArea, Integer numberOfFloors, String facilityFree) {
+    public Facility(Integer id, String name, Integer area, Double cost, Integer maxPeople, FacilityType facilityType, RentType rentType, String standardRoom, String descriptionOtherConvenience, Double poolArea, Integer numberOfFloors, String facilityFree, List<Contract> contracts) {
         this.id = id;
         this.name = name;
         this.area = area;
@@ -52,6 +58,7 @@ public class Facility {
         this.poolArea = poolArea;
         this.numberOfFloors = numberOfFloors;
         this.facilityFree = facilityFree;
+        this.contracts = contracts;
     }
 
     public Integer getId() {
@@ -148,5 +155,13 @@ public class Facility {
 
     public void setFacilityFree(String facilityFree) {
         this.facilityFree = facilityFree;
+    }
+
+    public List<Contract> getContracts() {
+        return contracts;
+    }
+
+    public void setContracts(List<Contract> contracts) {
+        this.contracts = contracts;
     }
 }

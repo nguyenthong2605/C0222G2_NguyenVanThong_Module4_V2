@@ -1,6 +1,9 @@
 package com.codgym.casestudyfurama.model.customer;
 
+import com.codgym.casestudyfurama.model.contract.Contract;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -29,10 +32,13 @@ public class Customer {
 
     private String address;
 
+    @OneToMany(mappedBy = "customer")
+    private List<Contract> contracts;
+
     public Customer() {
     }
 
-    public Customer(Integer id, CustomerType customerType, String name, String dateOfBirth, String gender, String idCard, String phoneNumber, String email, String address) {
+    public Customer(Integer id, CustomerType customerType, String name, String dateOfBirth, String gender, String idCard, String phoneNumber, String email, String address, List<Contract> contracts) {
         this.id = id;
         this.customerType = customerType;
         this.name = name;
@@ -42,6 +48,7 @@ public class Customer {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
+        this.contracts = contracts;
     }
 
     public Integer getId() {
@@ -114,5 +121,13 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<Contract> getContracts() {
+        return contracts;
+    }
+
+    public void setContracts(List<Contract> contracts) {
+        this.contracts = contracts;
     }
 }
